@@ -2,9 +2,9 @@
 
 An interactive dashboard for exploring 45 years of rainfall across all 47 Kenyan counties, built for people who want to see climate patterns without GIS software or statistical training.
 
-**Live app:** https://KCAD.streamlit.app
+**Live app:** https://kcad-kenya-rainfall.streamlit.app
 
-![KCAD screenshot](docs/screenshot.png)
+![KCAD screenshot](docs/screenshot1.png)
 
 ## What it does
 
