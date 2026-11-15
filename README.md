@@ -63,6 +63,8 @@ prepare_data.py                Raw data to county-level dataset
 requirements.txt
 data/kenya_county_rainfall.csv Prepared dataset used by the app
 data/raw/                      Raw inputs (not committed)
+docs/                          Where to view the app screenshots
+README.md
 ```
 
 ## Limitations
