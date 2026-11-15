@@ -5,6 +5,7 @@ An interactive dashboard for exploring 45 years of rainfall across all 47 Kenyan
 **Live app:** https://kcad-kenya-rainfall.streamlit.app
 
 ![KCAD screenshot](docs/screenshot1.png)
+![KCAD raw csv data download](docs/screenshot2.png)
 
 ## What it does
 
