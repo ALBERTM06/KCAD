@@ -36,16 +36,20 @@ The project has two parts: a data preparation script and the dashboard.
 - **Dekads.** The source data is dekadal (10-day periods): three per month, 36 per year. Rainfall values are in millimetres per dekad.
 - **Complete periods only.** A year (or a 3-month season) is shown only if all of its dekads are present, so a partly recorded period never looks like a dry one. The same rule applies to the monthly chart, which uses only months with all three dekads.
 - **Weighted county averages.** Some counties are made up of several admin units of very different sizes. Averaging them equally distorts the result, so units are weighted by their pixel count (`n_pixels`), a proxy for area. For a few counties this changes annual totals by more than 10% compared with a simple average.
-- **Long-term average.** The `rfh_avg` column comes straight from the HDX dataset and is used as the baseline for the anomaly chart.
+- **Long-term average.** The `rfh_avg` column comes from the HDX dataset. According to the HDX HAPI documentation for this series, the baseline period is 1989–2018. It is combined to county level with the same pixel weights as rainfall and is the baseline for the anomaly chart.
 - **Anomaly.** Calculated as (actual − long-term average) / long-term average × 100.
 
 ## Run it locally
 
-```bash
+Built with Python 3.13.
+
+```
 git clone https://github.com/ALBERTM06/KCAD.git
 cd KCAD
 python -m venv venv
-venv\Scripts\activate        # macOS/Linux: source venv/bin/activate
+venv\Scripts\activate        # Windows (Command Prompt)
+.\venv\Scripts\Activate.ps1  # Windows (PowerShell)
+source venv/bin/activate     # macOS/Linux
 python -m pip install -r requirements.txt
 python -m streamlit run app.py
 ```
@@ -63,7 +67,7 @@ prepare_data.py                Raw data to county-level dataset
 requirements.txt
 data/kenya_county_rainfall.csv Prepared dataset used by the app
 data/raw/                      Raw inputs (not committed)
-docs/                          Where to view the app screenshots
+docs/                          App screenshots used in this README
 README.md
 ```
 
@@ -71,14 +75,16 @@ README.md
 
 - Rainfall only in this version. Temperature and crop yield data are planned for v2.
 - Pixel-count weighting approximates area weighting; it is not exact.
-- The shaded rainy seasons show Kenya's typical pattern. Some counties, especially in the west and on the coast, follow a different rhythm.
+- County values follow WFP's admin units, which do not perfectly match official boundaries.
+- The shaded rainy seasons show Kenya's typical pattern. A few western and Rift Valley highland counties (for example Nandi, Trans Nzoia and Uasin Gishu) get a large share of their rain outside those months.
 - Data after the latest complete dekad is not available, so the current year is incomplete.
 
 ## Data sources
 
-- Humanitarian Data Exchange. *Kenya: Rainfall indicators at subnational level* (CHIRPS-based). OCHA Centre for Humanitarian Data. https://data.humdata.org/dataset/ken-rainfall-subnational (see the dataset page for licence terms)
+- World Food Programme & Climate Hazards Center, UC Santa Barbara. *Kenya: Rainfall indicators at subnational level* (computed from CHIRPS v2). Published on the Humanitarian Data Exchange. https://data.humdata.org/dataset/ken-rainfall-subnational (licence terms on the dataset page)
 - kenya-eie-wg. *kenya_locations* (PCODE-to-county lookup). https://github.com/kenya-eie-wg/kenya_locations
 
 ## Author
 
 Albert Karoki Miricho — Computer Science, Strathmore University
+
