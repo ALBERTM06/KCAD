@@ -42,8 +42,8 @@ The project has two parts: a data preparation script and the dashboard.
 ## Run it locally
 
 ```bash
-git clone https://github.com/ALBERTM06/kcad.git
-cd kcad
+git clone https://github.com/ALBERTM06/KCAD.git
+cd KCAD
 python -m venv venv
 venv\Scripts\activate        # macOS/Linux: source venv/bin/activate
 python -m pip install -r requirements.txt
